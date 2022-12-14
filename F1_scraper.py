@@ -71,14 +71,16 @@ if __name__ == "__main__":
                         driverName = driverDict[driverNum][0]
                         driverCode = driverDict[driverNum][1]
                         laptimes = scrape_data(raceURLcode, driverCode)
-                        exitKey = "0"
+                        
 
                         if len(laptimes) < 1:
                             # if laptimes is empty, most likely the driver was not driving
                             print("Sorry this driver did not start this race, please try again.")
+                            exitKey = "1"
                         else:
                             write_to_csv(laptimes, raceYear, raceName, driverName)
                             print(laptimes)
+                            exitKey = "0"
                     else:
                         print('Driver not supported')
 
